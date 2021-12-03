@@ -1,47 +1,47 @@
 'use strict';
 
-/*
-console.log(document.querySelector('.message').textContent);
-
-document.querySelector('.message').textContent = 'correct number';
-
-document.querySelector('.number').textContent = 13;
-document.querySelector('.score').textContent = 10;
-
-document.querySelector('.guess').value = 23;
-console.log(document.querySelector('.guess').value);
-*/
-
+//// generating a secret number from 1 to 20
 const secretNumber = Math.trunc(Math.random() * 20) + 1;
 console.log(secretNumber);
 
+//// high score
 let score = 20;
-// console.log(typeof score, '<---- ');
-
+//// changing the text content of .number to secret number
 document.querySelector('.number').textContent = secretNumber;
 
+//// even listner for listening on click the .check btn
 document.querySelector('.check').addEventListener('click', function () {
   const guess = Number(document.querySelector('.guess').value);
-  //   console.log(guess, typeof guess);
-
+  //// when ther's not input number from player
   if (!guess) {
     document.querySelector('.message').textContent = 'No Number';
+    //// when player's guess is correct and wins
   } else if (guess === secretNumber) {
     document.querySelector('.message').textContent = 'correct number';
+    //// change background color when guess is correct
+    document.querySelector('body').style.backgroundColor = '#60b347';
+    //// change width to 30rem
+    document.querySelector('.number').style.width = '30rem';
+    //// when input number is greater then secret number
   } else if (guess > secretNumber) {
+    //// when score is greater then 1
     if (score > 1) {
       document.querySelector('.message').textContent = 'Too high';
       score--;
       document.querySelector('.label-score').textContent = score;
+      //// when score is less then 1
     } else {
       document.querySelector('.message').textContent = 'YOU LOST THE GAME';
       document.querySelector('.label-score').textContent = 0;
     }
+    //// when input number is less then secret number
   } else if (guess < secretNumber) {
+    //// when score is greater then 1
     if (score > 1) {
       document.querySelector('.message').textContent = 'Too low';
       score--;
       document.querySelector('.label-score').textContent = score;
+      //// when score is less then 1
     } else {
       document.querySelector('.message').textContent = 'YOU LOST THE GAME';
       document.querySelector('.label-score').textContent = 0;
