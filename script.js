@@ -6,6 +6,7 @@ let secretNumber = Math.trunc(Math.random() * 20) + 1;
 
 //// high score
 let score = 20;
+let highScore = 0;
 
 //// even listner for listening on click the .check btn
 document.querySelector('.check').addEventListener('click', function () {
@@ -23,6 +24,12 @@ document.querySelector('.check').addEventListener('click', function () {
     document.querySelector('body').style.backgroundColor = '#60b347';
     //// change width to 30rem
     document.querySelector('.number').style.width = '30rem';
+
+    //// keeping track of the highScore and adjusting it
+    if (score > highScore) {
+      highScore = score;
+      document.querySelector('.highscore').textContent = highScore;
+    }
     //// when input number is greater then secret number
   } else if (guess > secretNumber) {
     //// when score is greater then 1
