@@ -29,11 +29,11 @@ document.querySelector('.check').addEventListener('click', function () {
     if (score > 1) {
       document.querySelector('.message').textContent = 'Too high';
       score--;
-      document.querySelector('.label-score').textContent = score;
+      document.querySelector('.score').textContent = score;
       //// when score is less then 1
     } else {
       document.querySelector('.message').textContent = 'YOU LOST THE GAME';
-      document.querySelector('.label-score').textContent = 0;
+      document.querySelector('.score').textContent = 0;
     }
     //// when input number is less then secret number
   } else if (guess < secretNumber) {
@@ -41,11 +41,11 @@ document.querySelector('.check').addEventListener('click', function () {
     if (score > 1) {
       document.querySelector('.message').textContent = 'Too low';
       score--;
-      document.querySelector('.label-score').textContent = score;
+      document.querySelector('.score').textContent = score;
       //// when score is less then 1
     } else {
       document.querySelector('.message').textContent = 'YOU LOST THE GAME';
-      document.querySelector('.label-score').textContent = 0;
+      document.querySelector('.score').textContent = 0;
     }
   }
 });
@@ -58,7 +58,7 @@ document.querySelector('.again').addEventListener('click', function () {
   document.querySelector('.message').textContent = 'Start guessing...';
 
   //   console.log(secretNumber, '<---- new');
-  document.querySelector('.label-score').textContent = score;
+  document.querySelector('.score').textContent = score;
 
   document.querySelector('.number').textContent = '?';
 
