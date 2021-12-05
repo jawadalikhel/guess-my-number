@@ -1,13 +1,11 @@
 'use strict';
 
 //// generating a secret number from 1 to 20
-const secretNumber = Math.trunc(Math.random() * 20) + 1;
-console.log(secretNumber);
+let secretNumber = Math.trunc(Math.random() * 20) + 1;
+// console.log(secretNumber);
 
 //// high score
 let score = 20;
-//// changing the text content of .number to secret number
-document.querySelector('.number').textContent = secretNumber;
 
 //// even listner for listening on click the .check btn
 document.querySelector('.check').addEventListener('click', function () {
@@ -17,6 +15,9 @@ document.querySelector('.check').addEventListener('click', function () {
     document.querySelector('.message').textContent = 'No Number';
     //// when player's guess is correct and wins
   } else if (guess === secretNumber) {
+    //// changing the text content of .number to secret number
+    document.querySelector('.number').textContent = secretNumber;
+
     document.querySelector('.message').textContent = 'correct number';
     //// change background color when guess is correct
     document.querySelector('body').style.backgroundColor = '#60b347';
@@ -47,4 +48,24 @@ document.querySelector('.check').addEventListener('click', function () {
       document.querySelector('.label-score').textContent = 0;
     }
   }
+});
+
+document.querySelector('.again').addEventListener('click', function () {
+  score = 20;
+
+  secretNumber = Math.trunc(Math.random() * 20) + 1;
+
+  document.querySelector('.message').textContent = 'Start guessing...';
+
+  //   console.log(secretNumber, '<---- new');
+  document.querySelector('.label-score').textContent = score;
+
+  document.querySelector('.number').textContent = '?';
+
+  document.querySelector('.guess').value = '';
+
+  //// change background color when guess is correct
+  document.querySelector('body').style.backgroundColor = '#222';
+  //// change width to 30rem
+  document.querySelector('.number').style.width = '15rem';
 });
